@@ -10,9 +10,21 @@ function clearDisplay() {
   
   function calculateResult() {
     try {
-      const result = eval(document.getElementById('display').value);
-      document.getElementById('display').value = result;
-    } catch (error) {
+      const displayElement = document.getElementById('display');
+      const inputValue = displayElement.value.trim();
+  
+      if (inputValue !== '') {
+        const result = eval(inputValue);
+  
+        if (!isNaN(result)) {
+          // Check if the result is a valid number
+          displayElement.value = result;
+        } else {
+          displayElement.value = 'Error: Invalid Calculation';
+        }
+      }
+    } 
+    catch (error) {
       document.getElementById('display').value = 'Error';
     }
   }
