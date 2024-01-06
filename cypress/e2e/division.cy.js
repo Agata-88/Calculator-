@@ -1,100 +1,70 @@
 describe('Division test', () => {
   it('should correctly divide two numbers', () => {
     cy.visit('http://127.0.0.1:5500/index.html')
-
-    // Testing positive integers. 
-    // Display is cleared after each calculation
-    cy.contains("button", "6").click();
-    cy.contains('button', '/').click();
-    cy.contains("button", "2").click();
-    cy.contains('button', '=').click();
-    cy.get('input#display').should('have.value', '3');
-    cy.contains("button", "C").click();
-    cy.get('input#display').should('have.value', '');
-
-    cy.contains("button", "4").click();
-    cy.contains("button", "8").click();
-    cy.contains('button', '/').click();
-    cy.contains("button", "1").click();
-    cy.contains("button", "2").click();
-    cy.contains('button', '=').click();
-    cy.get('input#display').should('have.value', '4');
-    cy.contains("button", "C").click();
-    cy.get('input#display').should('have.value', '');
-
-    // Testing division by 0 and if "error" is correctly displayed
-    cy.contains("button", "7").click();
-    cy.contains('button', '/').click();
-    cy.contains("button", "0").click();
-    cy.contains('button', '=').click();
-    cy.get('input#display').should('have.value', "Error: You can't devide by 0");
-    cy.contains("button", "C").click();
-    cy.get('input#display').should('have.value', '');
-
-    // Testing negative itegers
-    cy.contains("button", "-").click();
-    cy.contains("button", "6").click();
-    cy.contains('button', '/').click();
-    cy.contains("button", "-").click();
-    cy.contains("button", "2").click();
-    cy.contains('button', '=').click();
-    cy.get('input#display').should('have.value', '3');
-    cy.contains("button", "C").click();
-    cy.get('input#display').should('have.value', '');
-
-    cy.contains("button", "-").click();
-    cy.contains("button", "6").click();
-    cy.contains("button", "6").click();
-    cy.contains('button', '/').click();
-    cy.contains("button", "-").click();
-    cy.contains("button", "1").click();
-    cy.contains("button", "2").click();
-    cy.contains('button', '=').click();
-    cy.get('input#display').should('have.value', '5.5');
-    cy.contains("button", "C").click();
-    cy.get('input#display').should('have.value', '');
-
-    // Testing dividing positive integers by negative itegers
-    cy.contains("button", "6").click();
-    cy.contains('button', '/').click();
-    cy.contains("button", "-").click();
-    cy.contains("button", "2").click();
-    cy.contains('button', '=').click();
-    cy.get('input#display').should('have.value', '-3');
-    cy.contains("button", "C").click();
-    cy.get('input#display').should('have.value', '');
-
-    cy.contains("button", "6").click();
-    cy.contains("button", "6").click();
-    cy.contains('button', '/').click();
-    cy.contains("button", "-").click();
-    cy.contains("button", "1").click();
-    cy.contains("button", "2").click();
-    cy.contains('button', '=').click();
-    cy.get('input#display').should('have.value', '-5.5');
-    cy.contains("button", "C").click();
-    cy.get('input#display').should('have.value', '');
-
-    // Testing dividing negative integers by positive itegers
-    cy.contains("button", "-").click();
-    cy.contains("button", "6").click();
-    cy.contains('button', '/').click();
-    cy.contains("button", "2").click();
-    cy.contains('button', '=').click();
-    cy.get('input#display').should('have.value', '-3');
-    cy.contains("button", "C").click();
-    cy.get('input#display').should('have.value', '');
     
-    cy.contains("button", "-").click();
-    cy.contains("button", "6").click();
-    cy.contains("button", "6").click();
-    cy.contains('button', '/').click();
-    cy.contains("button", "1").click();
-    cy.contains("button", "2").click();
-    cy.contains('button', '=').click();
-    cy.get('input#display').should('have.value', '-5.5');
-    cy.contains("button", "C").click();
-    cy.get('input#display').should('have.value', '');
+    const divide = (numerator, denominator, expectedValue) => {
+         // Helper function to input a large number using buttons
+        const inputLargeNumber = (largeNumber) => {
+        // Split the large number into individual digits
+        const digits = largeNumber.split('');
+        // Click the buttons for each digit
+        digits.forEach(digit => {
+          cy.contains("button", digit).click();
+        });
+      }
 
-  })
+      // Testing function allows to test both negative and positive 
+      // integers, including large numbers
+      inputLargeNumber(numerator);
+      cy.contains("button", "/").click();
+      inputLargeNumber(denominator);
+      cy.contains("button", "=").click();
+      cy.get("input#display").should("have.value", expectedValue);
+      cy.contains("button", "C").click();
+      cy.get('input#display').should('have.value', '');
+    };
+  
+    // Test cases
+    const testCases= [
+      // Testing positive integers, including very large numbers
+      {numerator: "6", denominator: "2", expectedValue: "3"},
+      {numerator: "10", denominator: "5", expectedValue: "2"},
+      {numerator: "150", denominator: "3", expectedValue: "50"},
+      {numerator: "1500000000000000", denominator: "399999999999999", expectedValue: "3.7500000000000093"},
+      {numerator: "15597562143664", denominator: "3996579132645", expectedValue: "3.9027282148023636"},
+
+      // Testing negative integers, including large numbers
+      {numerator: "-6", denominator: "-2", expectedValue: "3"},
+      {numerator: "-10", denominator: "-5", expectedValue: "2"},
+      {numerator: "-150", denominator: "-3", expectedValue: "50"},
+      {numerator: "-1500000000000000", denominator: "-399999999999999", expectedValue: "3.7500000000000093"},
+      {numerator: "-15597562143664", denominator: "-3996579132645", expectedValue: "3.9027282148023636"},
+
+      // Testing dividing negative integers by positive integers, including large numbers
+      {numerator: "-6", denominator: "2", expectedValue: "-3"},
+      {numerator: "-10", denominator: "5", expectedValue: "-2"},
+      {numerator: "-150", denominator: "3", expectedValue: "-50"},
+      {numerator: "-1500000000000000", denominator: "399999999999999", expectedValue: "-3.7500000000000093"},
+      {numerator: "-15597562143664", denominator: "3996579132645", expectedValue: "-3.9027282148023636"},
+
+      // Testing dividing positive integers by negative integers, including large numbers
+      {numerator: "6", denominator: "-2", expectedValue: "-3"},
+      {numerator: "10", denominator: "-5", expectedValue: "-2"},
+      {numerator: "150", denominator: "-3", expectedValue: "-50"},
+      {numerator: "1500000000000000", denominator: "-399999999999999", expectedValue: "-3.7500000000000093"},
+      {numerator: "15597562143664", denominator: "-3996579132645", expectedValue: "-3.9027282148023636"},
+ 
+      // Testing dividing by 0 and error message display
+      {numerator: "6", denominator: "0", expectedValue: "Error: You can't devide by 0"},
+      {numerator: "10", denominator: "0", expectedValue: "Error: You can't devide by 0"},
+      {numerator: "150", denominator: "0", expectedValue: "Error: You can't devide by 0"},
+      {numerator: "1500000000000000", denominator: "0", expectedValue: "Error: You can't devide by 0"},
+      {numerator: "15597562143664", denominator: "0", expectedValue: "Error: You can't devide by 0"},
+    ];
+
+    // Iterate through test cases and execute 'divide' function
+    testCases.forEach(({ numerator, denominator, expectedValue }) => {
+      divide(numerator, denominator, expectedValue);
+    });
+  });
 })
