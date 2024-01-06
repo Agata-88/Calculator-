@@ -18,8 +18,13 @@ function clearDisplay() {
   
         if (!isNaN(result)) {
           // Check if the result is a valid number
-          displayElement.value = result;
-        } else {
+          if (result === Infinity) {
+            // Handle division by 0
+            displayElement.value = "Error: You can't devide by 0";
+          } else {
+            displayElement.value = result;
+        } 
+      } else {
           displayElement.value = 'Error: Invalid Calculation';
         }
       }
