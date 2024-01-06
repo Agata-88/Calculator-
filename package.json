@@ -1,0 +1,15 @@
+{
+  "name": "calculator-",
+  "version": "1.0.0",
+  "description": "Purpose of this collaborative project is to test calculator application using cypress",
+  "main": "calculator.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^13.6.2"
+  }
+}
