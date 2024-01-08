@@ -14,18 +14,14 @@
 
   <div class="calculator">
 
-    <input class="shadow p-3 mb-5 bg-white rounded" type="text" id="display" disabled>
-    <br>
-    
+    <input class="shadow p-3 mb-3 bg-white rounded" type="text" id="display" disabled>
     <button id="numericalButton" onclick="appendToDisplay('7')" style="font-weight: bold;">7</button>
     <button id="numericalButton" onclick="appendToDisplay('8')"style="font-weight: bold;">8</button>
     <button id="numericalButton" onclick="appendToDisplay('9')"style="font-weight: bold;">9</button>
     
-    <button id="functionButton" onclick="appendToDisplay('+')">+</button>  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="fa fa-calculator" style="font-size:48px;color:red" viewBox="0 0 16 16">
-      <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2zm2 .5v2a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 0-.5-.5h-7a.5.5 0 0 0-.5.5m0 4v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5M4.5 9a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zM4 12.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5M7.5 6a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zM7 9.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5m.5 2.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zM10 6.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5m.5 2.5a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-.5-.5z"/>
-    </svg>
+    <button id="functionButton" onclick="appendToDisplay('+')">+</button>  
     <br>
-    <button id="numericalButton" onclick="appendToDisplay('4')"style="font-weight: bold;box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2)">4</button>
+    <button id="numericalButton" onclick="appendToDisplay('4')"style="font-weight: bold;">4</button>
     <button id="numericalButton" onclick="appendToDisplay('5')"style="font-weight: bold;">5</button>
     <button id="numericalButton" onclick="appendToDisplay('6')"style="font-weight: bold;">6</button>
     <button id="functionButton" onclick="appendToDisplay('-')"style="font-weight: bold;">-</button>
@@ -37,9 +33,9 @@
     <br>
     <button id="clearButton" onclick="clearDisplay()"style="font-weight: bold;">C</button>
     <button id="numericalButton" onclick="appendToDisplay('0')"style="font-weight: bold;">0</button>
-    <button id="functionButton" onclick="calculateResult()"style="font-weight: bold;">=</button>
+    <button id="functionButton" onclick="appendToDisplay('.')"style="font-weight: bold;">.</button>
     <button id="functionButton" onclick="appendToDisplay('/')"style="font-weight: bold;">/</button>
-
+    <button id="equalButton" onclick="calculateResult()"style="font-weight: bold;">=</button>
     <script src="calculator.js"></script>
 
  </div>
