@@ -31,11 +31,24 @@ button {
   background-color: rgb(255, 0, 179)
 }
 
-#numericalButton {
+#num0, 
+#num1,
+#num2,
+#num3,
+#num4,
+#num5,
+#num6,
+#num7,
+#num8,
+#num9 {
   background-color: rgb(184, 230, 173)
 }
 
-#functionButton {
+#addButton,
+#subtractButton,
+#multiplyButton,
+#divideButton,
+#decimalButton {
   background-color: lightseagreen;
 }
 
