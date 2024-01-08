@@ -4,35 +4,45 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Simple Calculator</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   
   </style>
 </head>
-<body>
+<body class="body">
 
-  <input type="text" id="display" disabled>
-  <br>
-  <button id="numericalButton" onclick="appendToDisplay('7')">7</button>
-  <button id="numericalButton" onclick="appendToDisplay('8')">8</button>
-  <button id="numericalButton" onclick="appendToDisplay('9')">9</button>
-  <button id="functionButton" onclick="appendToDisplay('+')">+</button>
-  <br>
-  <button id="numericalButton" onclick="appendToDisplay('4')">4</button>
-  <button id="numericalButton" onclick="appendToDisplay('5')">5</button>
-  <button id="numericalButton" onclick="appendToDisplay('6')">6</button>
-  <button id="functionButton" onclick="appendToDisplay('-')">-</button>
-  <br>
-  <button id="numericalButton" onclick="appendToDisplay('1')">1</button>
-  <button id="numericalButton" onclick="appendToDisplay('2')">2</button>
-  <button id="numericalButton" onclick="appendToDisplay('3')">3</button>
-  <button id="functionButton" onclick="appendToDisplay('*')">*</button>
-  <br>
-  <button id="clearButton" onclick="clearDisplay()">C</button>
-  <button id="numericalButton" onclick="appendToDisplay('0')">0</button>
-  <button id="functionButton" onclick="calculateResult()">=</button>
-  <button id="functionButton" onclick="appendToDisplay('/')">/</button>
+  <div class="calculator">
 
-  <script src="calculator.js"></script>
+    <input class="shadow p-3 mb-5 bg-white rounded" type="text" id="display" disabled>
+    <br>
+    
+    <button id="numericalButton" onclick="appendToDisplay('7')" style="font-weight: bold;">7</button>
+    <button id="numericalButton" onclick="appendToDisplay('8')"style="font-weight: bold;">8</button>
+    <button id="numericalButton" onclick="appendToDisplay('9')"style="font-weight: bold;">9</button>
+    
+    <button id="functionButton" onclick="appendToDisplay('+')">+</button>  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="fa fa-calculator" style="font-size:48px;color:red" viewBox="0 0 16 16">
+      <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2zm2 .5v2a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 0-.5-.5h-7a.5.5 0 0 0-.5.5m0 4v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5M4.5 9a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zM4 12.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5M7.5 6a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zM7 9.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5m.5 2.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zM10 6.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5m.5 2.5a.5.5 0 0 0-.5.5v4a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-.5-.5z"/>
+    </svg>
+    <br>
+    <button id="numericalButton" onclick="appendToDisplay('4')"style="font-weight: bold;box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2)">4</button>
+    <button id="numericalButton" onclick="appendToDisplay('5')"style="font-weight: bold;">5</button>
+    <button id="numericalButton" onclick="appendToDisplay('6')"style="font-weight: bold;">6</button>
+    <button id="functionButton" onclick="appendToDisplay('-')"style="font-weight: bold;">-</button>
+    <br>
+    <button id="numericalButton" onclick="appendToDisplay('1')"style="font-weight: bold;">1</button>
+    <button id="numericalButton" onclick="appendToDisplay('2')"style="font-weight: bold;">2</button>
+    <button id="numericalButton" onclick="appendToDisplay('3')"style="font-weight: bold;">3</button>
+    <button id="functionButton" onclick="appendToDisplay('*')"style="font-weight: bold;">*</button>
+    <br>
+    <button id="clearButton" onclick="clearDisplay()"style="font-weight: bold;">C</button>
+    <button id="numericalButton" onclick="appendToDisplay('0')"style="font-weight: bold;">0</button>
+    <button id="functionButton" onclick="calculateResult()"style="font-weight: bold;">=</button>
+    <button id="functionButton" onclick="appendToDisplay('/')"style="font-weight: bold;">/</button>
+
+    <script src="calculator.js"></script>
+
+ </div>
 
 </body>
 </html>
