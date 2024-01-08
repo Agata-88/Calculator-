@@ -5,8 +5,25 @@ function clearDisplay() {
   }
   
   function appendToDisplay(value) {
-    document.getElementById('display').value += value;
+    const displayElement = document.getElementById('display');
+    const currentValue = displayElement.value;
+  
+    // Check if the new value is an operator
+    const isNewValueOperator = ['+', '-', '*', '/'].includes(value);
+  
+    // Check if the last character is an operator
+    const lastChar = currentValue.slice(-1);
+    const isLastCharOperator = ['+', '-', '*', '/'].includes(lastChar);
+  
+    if (isNewValueOperator && isLastCharOperator) {
+      // If both the last character and the new value are operators, replace the last operator
+      displayElement.value = currentValue.slice(0, -1) + value;
+    } else {
+      // Otherwise, append the new value
+      displayElement.value += value;
+    }
   }
+  
   
   function calculateResult() {
     try {
